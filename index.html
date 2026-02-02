@@ -1,205 +1,195 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
 <meta charset="UTF-8">
-<title>Will You Be My Valentine? 💘</title>
+<title>Will You Be My Valentine?</title>
 
 <style>
-    * {
-        box-sizing: border-box;
-        user-select: none;
-    }
+body {
+  margin: 0;
+  height: 100vh;
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(135deg, #ffafbd, #ffc3a0);
+  overflow: hidden;
+}
 
-    body {
-        margin: 0;
-        height: 100vh;
-        background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-        font-family: 'Comic Sans MS', cursive;
-        overflow: hidden;
-    }
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  z-index: 2;
+  position: relative;
+}
 
-    .container {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-    }
+h1 {
+  color: #fff;
+  font-size: 32px;
+  text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
 
-    h1 {
-        font-size: 3rem;
-        color: #b5179e;
-        margin-bottom: 40px;
-        animation: pulse 1.5s infinite;
-    }
+#extraText {
+  margin-top: 10px;
+  font-size: 18px;
+  color: #fff;
+  min-height: 24px;
+}
 
-    @keyframes pulse {
-        0% { transform: scale(1); }
-        50% { transform: scale(1.08); }
-        100% { transform: scale(1); }
-    }
+.buttons {
+  margin-top: 25px;
+}
 
-    button {
-        position: absolute;
-        padding: 15px 35px;
-        font-size: 1.4rem;
-        border: none;
-        border-radius: 15px;
-        cursor: pointer;
-        transition: 0.3s ease;
-    }
+button {
+  padding: 14px 28px;
+  font-size: 18px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
 
-    #yesBtn {
-        background: #ff4d6d;
-        color: white;
-        left: 40%;
-        top: 60%;
-        box-shadow: 0 0 20px rgba(255,77,109,0.6);
-    }
+#yesBtn {
+  background: #ff4d6d;
+  color: white;
+}
 
-    #noBtn {
-        background: #adb5bd;
-        color: black;
-        left: 55%;
-        top: 60%;
-    }
+#noBtn {
+  background: #6c757d;
+  color: white;
+  margin-left: 15px;
+}
 
-    /* Celebration Page */
-    .celebration {
-        display: none;
-        width: 100%;
-        height: 100%;
-        background: radial-gradient(circle, #fff0f6, #ff69b4);
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        animation: fadeIn 1s ease;
-    }
+/* HALAMAN HAPPY */
+#happyScreen {
+  display: none;
+  height: 100vh;
+  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 
-    @keyframes fadeIn {
-        from { opacity: 0; }
-        to { opacity: 1; }
-    }
+#happyScreen h1 {
+  font-size: 50px;
+  color: white;
+  animation: bounce 1s infinite;
+}
 
-    .celebration h1 {
-        font-size: 4rem;
-        color: #d0006f;
-        animation: bounce 0.8s infinite alternate;
-    }
+#happyScreen img {
+  width: 260px;
+  margin-top: 20px;
+}
 
-    @keyframes bounce {
-        from { transform: translateY(0); }
-        to { transform: translateY(-20px); }
-    }
+@keyframes bounce {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
 
-    .hearts {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        pointer-events: none;
-    }
+/* ANIMASI HATI */
+.heart {
+  position: absolute;
+  color: rgba(255,255,255,0.8);
+  font-size: 20px;
+  animation: floatUp 6s linear infinite;
+}
 
-    .heart {
-        position: absolute;
-        color: #ff4d6d;
-        font-size: 2rem;
-        animation: float 5s linear infinite;
-    }
-
-    @keyframes float {
-        from {
-            transform: translateY(100vh) scale(1);
-            opacity: 1;
-        }
-        to {
-            transform: translateY(-10vh) scale(1.5);
-            opacity: 0;
-        }
-    }
+@keyframes floatUp {
+  0% {
+    transform: translateY(100vh) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-10vh) scale(1.5);
+    opacity: 0;
+  }
+}
 </style>
 </head>
 
 <body>
 
-<audio id="bgm" loop>
-    <source src="perfect.mp3" type="audio/mpeg">
+<!-- BACKSOUND -->
+<audio id="bgMusic" autoplay loop>
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_5c06bb7e03.mp3" type="audio/mpeg">
 </audio>
 
-<div class="container" id="main">
-    <h1>Will you be my Valentine? 💕</h1>
-    <button id="yesBtn">Yes</button>
-    <button id="noBtn">No</button>
+<div class="container" id="questionScreen">
+  <h1>Will you be my Valentine? 💖</h1>
+  <div id="extraText"></div>
+
+  <div class="buttons">
+    <button id="yesBtn">Yes 💕</button>
+    <button id="noBtn">No 😅</button>
+  </div>
 </div>
 
-<div class="celebration" id="celebration">
-    <h1>YEEYYYYY 💖🎉</h1>
-    <p style="font-size:2rem;">Happy Valentine’s Day 💘</p>
-    <div class="hearts" id="hearts"></div>
+<div class="container" id="happyScreen">
+  <h1>YEEEEYYY!!! 🎉💖</h1>
+  <img src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif" alt="Happy">
 </div>
 
 <script>
-    const yesBtn = document.getElementById("yesBtn");
-    const noBtn = document.getElementById("noBtn");
-    const celebration = document.getElementById("celebration");
-    const main = document.getElementById("main");
-    const bgm = document.getElementById("bgm");
-    const hearts = document.getElementById("hearts");
+const yesBtn = document.getElementById("yesBtn");
+const noBtn = document.getElementById("noBtn");
+const extraText = document.getElementById("extraText");
+const questionScreen = document.getElementById("questionScreen");
+const happyScreen = document.getElementById("happyScreen");
+const music = document.getElementById("bgMusic");
 
-    let noClick = 0;
-    let yesScale = 1;
+let scale = 1;
+let clickCount = 0;
 
-    // Play music on first interaction (browser rule)
-    document.body.addEventListener("click", () => {
-        bgm.play().catch(()=>{});
-    }, { once: true });
+const messages = [
+  "Are you sure?",
+  "Ayo dong Natalia 🥺",
+  "Pliss Natalia 😭",
+  "Mohon banget Natalia 💔"
+];
 
-    noBtn.addEventListener("click", () => {
-        noClick++;
+// PLAY MUSIC ketika interaksi pertama (biar lolos browser policy)
+document.body.addEventListener("click", () => {
+  music.play();
+}, { once: true });
 
-        // Random position for NO button
-        const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
-        const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+yesBtn.addEventListener("click", () => {
+  questionScreen.style.display = "none";
+  happyScreen.style.display = "flex";
+});
 
-        noBtn.style.left = x + "px";
-        noBtn.style.top = y + "px";
+noBtn.addEventListener("click", () => {
+  scale *= 2;
+  yesBtn.style.transform = `scale(${scale})`;
 
-        // Enlarge YES button
-        yesScale += 0.25;
-        yesBtn.style.transform = `scale(${yesScale})`;
+  if (clickCount < messages.length) {
+    extraText.textContent = messages[clickCount];
+  }
 
-        // After ~13 clicks
-        if (noClick >= 13) {
-            yesBtn.style.width = "100vw";
-            yesBtn.style.height = "100vh";
-            yesBtn.style.left = "0";
-            yesBtn.style.top = "0";
-            yesBtn.style.borderRadius = "0";
-            yesBtn.style.fontSize = "4rem";
-            noBtn.style.display = "none";
-        }
-    });
+  clickCount++;
 
-    yesBtn.addEventListener("click", () => {
-        main.style.display = "none";
-        celebration.style.display = "flex";
-        createHearts();
-    });
+  if (scale > 8) {
+    yesBtn.style.position = "fixed";
+    yesBtn.style.top = 0;
+    yesBtn.style.left = 0;
+    yesBtn.style.width = "100vw";
+    yesBtn.style.height = "100vh";
+    yesBtn.style.fontSize = "48px";
+    yesBtn.style.borderRadius = "0";
+  }
+});
 
-    function createHearts() {
-        setInterval(() => {
-            const heart = document.createElement("div");
-            heart.className = "heart";
-            heart.innerHTML = "💖";
-            heart.style.left = Math.random() * 100 + "vw";
-            heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
-            hearts.appendChild(heart);
+/* GENERATE HATI */
+setInterval(() => {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "💖";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = (20 + Math.random() * 20) + "px";
+  document.body.appendChild(heart);
 
-            setTimeout(() => heart.remove(), 5000);
-        }, 300);
-    }
+  setTimeout(() => heart.remove(), 6000);
+}, 400);
 </script>
 
 </body>
